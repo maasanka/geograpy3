@@ -90,8 +90,10 @@ class PlaceContext(object):
     def is_a_country(self, s): 
         s = self.correct_country_mispelling(s)
         try:
-            pycountry.countries.get(name=s)
-            return True
+            value = pycountry.countries.get(name=s)
+            if value:
+                return True
+            return False
         except KeyError:
             return False
 
