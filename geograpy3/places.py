@@ -179,7 +179,10 @@ class PlaceContext(object):
 
             try:
                 country = pycountry.countries.get(alpha2=row[3])
-                country_name = country.name
+                if country:
+                    country_name = country.name
+                else:
+                    country_name = row[4]
             except KeyError:
                 country_name = row[4]
 
